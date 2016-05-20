@@ -31,9 +31,11 @@ object IrisLinearRegression {
     }.cache()
 
     // 创建模型
-    val model = LinearRegressionWithSGD.train(parsedData, 10, 0.1)
+    val numIterations = 100
+    val model = LinearRegressionWithSGD.train(parsedData, numIterations)
 
-    // 回归公式为: y = [1.4555311265305944] * x + 0.0
+    // numIterations = 10时， 回归公式为: y = [1.4555311265305944] * x + 0.0
+    // numIterations = 100时，回归公式为: y = [1.454275314752946] * x + 0.0
     println("回归公式为: y = " + model.weights + " * x + " + model.intercept) //打印回归公式
 
     // 创建均方误差训练数据
@@ -45,7 +47,9 @@ object IrisLinearRegression {
 
     // 计算均方误差
     val MSE = valuesAndPres.map { case (v, p) => math.pow((v - p), 2) }.mean()
-    println("均方误差结果为：" + MSE)  // 均方误差结果为：0.14003891091658002
+    // numIterations = 10时， 均方误差结果为：0.14003891091658002
+    // numIterations = 100时，均方误差结果为：0.14001699145848823
+    println("均方误差结果为：" + MSE)
   }
 
   /**
