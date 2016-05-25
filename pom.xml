@@ -54,6 +54,13 @@
             <version>1.6.4</version>
         </dependency>
 
+        <!-- ssh2 for java -->
+        <dependency>
+            <groupId>ch.ethz.ganymed</groupId>
+            <artifactId>ganymed-ssh2</artifactId>
+            <version>build210</version>
+        </dependency>
+
     </dependencies>
 
 
