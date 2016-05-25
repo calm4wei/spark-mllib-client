@@ -24,22 +24,22 @@ object HttpURLConnectionTest {
     connection.setReadTimeout(120000)
 
     connection.connect()
-//    val headerFields = connection.getHeaderFields
-//    val iter = headerFields.entrySet().iterator()
-//    while (iter.hasNext){
-//      val entry = iter.next()
-//      println(entry.getKey + ", " + entry.getValue)
-//    }
+    //    val headerFields = connection.getHeaderFields
+    //    val iter = headerFields.entrySet().iterator()
+    //    while (iter.hasNext){
+    //      val entry = iter.next()
+    //      println(entry.getKey + ", " + entry.getValue)
+    //    }
 
     val in = new BufferedReader(new InputStreamReader(
       connection.getInputStream()))
 
-    var line = ""
-    var result = ""
-    while ((line = in.readLine()) != null) {
-      result += line
-    }
-    println(result)
+    //    var line = ""
+    //    var result = ""
+    //    while ((line = in.readLine()) != null) {
+    //      result += line
+    //    }
+    //    println(result)
 
     in.close()
 
