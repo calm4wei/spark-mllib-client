@@ -1,5 +1,7 @@
 package com.cstor.spark.test
 
+import sys.process._
+
 /**
  * Created by Administrator on 2016/5/12.
  */
@@ -12,12 +14,40 @@ object Test {
   def main(args: Array[String]) {
     println("系统环境是：" + System.getenv())
 
-//    testFor()
-//    testWhile(10)
+    //    testFor()
+    //    testWhile(10)
     testIf(-2)
+
+    println("======= bash ========")
+    testBashShell("ls -al ")
+
+    println("======= regex ===========")
+    testRegex("[0-9]+", "128 hh, yes 0")
   }
 
-  def testFor(): Unit ={
+  def testRegex(regex: String, str: String): Unit = {
+    val pattern = regex.r
+    for (s <- pattern.findAllIn(str)) {
+      println("match " + pattern + " is : " + s)
+    }
+    //    match [0-9]+ is : 1128
+    //    match [0-9]+ is : 0
+
+    println("match " + pattern + " firstly is : " + pattern.findFirstIn(str))
+    //    match [0-9]+ firstly is : Some(128)
+
+    val numItempattern = "([0-9]+) ([a-z]+)".r
+    val numItempattern(num,item) = "20 wangwu"
+    for (numItempattern(num,item) <- numItempattern.findAllIn("20 wangwu, 30 lisi, eeee xxx")){
+      println(num + "," + item)
+    }
+  }
+
+  def testBashShell(command: String): Unit = {
+    command !
+  }
+
+  def testFor(): Unit = {
     val common = Array(1, 2, 3, 4)
     // 遍历数组
     for (i <- 0 until common.length)
@@ -47,14 +77,14 @@ object Test {
     }
   }
 
-  def testIf(n : Int): Unit ={
+  def testIf(n: Int): Unit = {
     val s = if (n > 0) 1 else -1 // 可以将if/else的值赋给变量
     println(s)
 
-    val x = if ( n > 0) "postive" else -1 // 两个分支类型的公共超类为Any
+    val x = if (n > 0) "postive" else -1 // 两个分支类型的公共超类为Any
     println(x)
 
-    val u = if ( n > 0) 1 else () // 每个表达式都应该有某种值 if ( n > 0) 1 等价于 if ( n > 0) 1 else ()
+    val u = if (n > 0) 1 else () // 每个表达式都应该有某种值 if ( n > 0) 1 等价于 if ( n > 0) 1 else ()
     println(u)
   }
 

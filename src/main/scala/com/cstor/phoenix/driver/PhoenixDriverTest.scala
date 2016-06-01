@@ -12,11 +12,11 @@ object PhoenixDriverTest {
 
     Class.forName("org.apache.phoenix.jdbc.PhoenixDriver")
 
-    val conn = DriverManager.getConnection("jdbc:phoenix:192.168.1.201")
+    val conn = DriverManager.getConnection("jdbc:phoenix:192.168.6.154")
 
     val statement = conn.createStatement()
 
-    val result = statement.executeQuery("select * from TEST2")
+    val result = statement.executeQuery("select * from TEST03_PHOENIX;")
 
     while (result != null && result.next()) {
       println(result.getString(1) + ", " + result.getString(2))

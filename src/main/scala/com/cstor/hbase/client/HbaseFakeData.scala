@@ -16,7 +16,7 @@ object HbaseFakeData {
   private val conf = HBaseConfiguration.create()
 
   conf.set("hbase.zookeeper.quorum", "datacube151,datacube154")
-  conf.set("zookeeper.znode.parent", "/hbase-unsecure")
+  conf.set("zookeeper.znode.parent", "/hbase")
 
   def fakeData(num: Int, htable: HTable) {
 

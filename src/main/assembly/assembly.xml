@@ -33,7 +33,7 @@
       <!-- Include main jar -->
       <directory>${basedir}</directory>
       <includes>
-        <include>cstor-spark-*.jar</include>
+        <include>${project.artifactId}-${project.version}.jar</include>
       </includes>
     </fileSet>
     <!--Include shell scripts-->

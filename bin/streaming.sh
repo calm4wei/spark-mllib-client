@@ -18,9 +18,9 @@ run () {
 }
 
 usage="Usage:\n
-$0 <sum | mllib> \"<data>\"  <path>
-sum \t Sum values, data format: yyyyMMddHH\n, <path>: to read file path\n
-mllib \t spark machine learing, data format: yyyyMMddHH\n, <path>: to read file path"
+$0 <ks | kds> \"<data>\"
+ks \t pipline from kafka using kafka kafka streaming, data format: yyyyMMddHH\n
+kds \t pipline from kafka using kafka direct streaming, data format: yyyyMMddHH\n"
 
 
 if [ $# -lt 3 ]; then
@@ -52,15 +52,15 @@ if [ ! -d $RUN_PATH ];then
 fi 
 
 case $1 in
-  sum)
-    CLASS="com.cstor.spark.test.SumOne"
-    LOG_FILE="SumOne.out.$2"
-    PID_FILE="SumOne.pid.$2"
+  ks)
+    CLASS="com.cstor.spark.streaming.SparkStreamingTest"
+    LOG_FILE="SparkStreamingTest.out.$2"
+    PID_FILE="SparkStreamingTest.pid.$2"
     ;;
-  mllib)
-    CLASS="com.cstor.spark.test.MlLibTest"
-    LOG_FILE="MlLibTest.out.$2"
-    PID_FILE="MlLibTest.pid.$2"
+  kds)
+    CLASS="com.cstor.spark.streaming.SparkDirectStreamingTest"
+    LOG_FILE="SparkDirectStreamingTest.out.$2"
+    PID_FILE="SparkDirectStreamingTest.pid.$2"
     ;;
   *)
     echo -e $usage
