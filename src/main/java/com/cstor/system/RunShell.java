@@ -1,4 +1,4 @@
-package com.cstor.shell;
+package com.cstor.system;
 
 import ch.ethz.ssh2.Connection;
 import ch.ethz.ssh2.Session;
