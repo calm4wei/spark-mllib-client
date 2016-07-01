@@ -13,7 +13,7 @@ object ThriftHiveTest {
     val t1 = System.currentTimeMillis()
     val conn = DriverManager.getConnection("jdbc:hive2://datacube151:10001/default", "spark", "")
 
-    val pstat = conn.prepareStatement("select bar, count(1) from invites group by bar")
+    val pstat = conn.prepareStatement("select * from pokes order by bar desc")
 
     val rs = pstat.executeQuery()
 
