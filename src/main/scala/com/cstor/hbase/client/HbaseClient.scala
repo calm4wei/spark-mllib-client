@@ -1,5 +1,7 @@
 package com.cstor.hbase.client
 
+import org.apache.hadoop.hbase.{HBaseConfiguration, RegionLoad}
+import org.apache.hadoop.hbase.regionserver.{HRegionServer, MetricsRegionServerWrapperImpl}
 import org.apache.hadoop.hbase.thrift.generated.Hbase
 import org.apache.thrift.protocol.{TBinaryProtocol, TProtocol}
 import org.apache.thrift.transport.TSocket
@@ -13,9 +15,9 @@ import org.apache.thrift.transport.TSocket
   */
 object HbaseClient {
 
-  def main(args: Array[String]) {
+  def getTablesByTransport(): Unit ={
     val transport = new TSocket("datacube151", 16000)
-//        if (secure) {
+    //        if (secure) {
     //          Map < String, String > saslProperties = new HashMap < String, String >();
     //          saslProperties.put(Sasl.QOP, "auth-conf,auth-int,auth");
     //
@@ -39,6 +41,10 @@ object HbaseClient {
 
     println("sum tables is: " + tableNames.size())
     transport.close()
+  }
+
+  def main(args: Array[String]) {
+
   }
 
 }

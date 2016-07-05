@@ -13,14 +13,15 @@ import java.io.InputStreamReader;
 public class RunShell {
 
     public static void main(String[] args) {
-        Connection conn = new Connection("192.168.107.202");
+        Connection conn = new Connection("192.168.6.154");
 
         try {
             conn.connect();
-            if (conn.authenticateWithPassword("root", "root")) {
+            if (conn.authenticateWithPassword("root", "cstorfs")) {
                 Session session = conn.openSession();
 
-                session.execCommand("/root/monitor.sh");
+                // 获取hbase目录的大小
+                session.execCommand("hdfs dfs -du -s -h /apps/hbase/data");
 
                 BufferedReader br = new BufferedReader(new InputStreamReader(session.getStdout()));
 
