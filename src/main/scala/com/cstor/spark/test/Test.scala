@@ -1,5 +1,8 @@
 package com.cstor.spark.test
 
+import java.io.File
+
+import scala.collection.mutable.Buffer
 import scala.io.Source
 import scala.sys.process._
 
@@ -27,32 +30,164 @@ object Test {
     //    testRegex("[0-9]+", "128 hh, yes 0")
 
     //    chapter6_01()
+    //    println(chapter6_02_factor(20))
+    //    println(chapter6_02_uniqueFactor(List(9, 10, 18)))
+    //    println(chapter6_02_uniqueFactorByFor(List(9, 10, 18)))
+    //    val chars = ('a' to 'f').toList
+    //    println(chapter6_03_first(chars, 2))
+    //    println(chapter6_03_first(chars, 2))
+    //    println(chapter6_03_firstByFoldleft(chars, 10))
+    //    println(chapter6_03_fisrtByTail(chars, 2))
+    //    println(chapter6_04(List("aaa", "bb", "cccc", "qqq")))
+    //    println(chapter6_04_fold(List("aaa", "bb", "cccc", "qqq")))
+    //    println(chapter6_04_reduce(List("aaa", "bb", "cccc", "qqq")))
+    //    val names: List[String] = List("aaqa", "bbq", "cqcccc", "qqaqq")
+    //    println(chapter6_04_greatest[String](names, (x, y) => if (x.size > y.size) x else y))
+    //    println(chapter6_05_reverse(names))
+    //    println(chapter6_05_reverse_recursion(names))
+    //    println(chapter6_06_partion(names))
+    //    // http://api.openweathermap.org/data/2.5/weather?q=Nanjing&mode=json&APPID=7cac89b6cb49f7b41b3b49c20503c110
+    //    val l = chapter6_07("http://api.openweathermap.org/data/2.5/weather?q=Nanjing&mode=xml&APPID=7cac89b6cb49f7b41b3b49c20503c110")
+    //    println(l(0))
+    //    println(l.size)
 
-    println(chapter6_02_factor(20))
 
-    println(chapter6_02_uniqueFactor(List(9, 10, 18)))
-    println(chapter6_02_uniqueFactorByFor(List(9, 10, 18)))
+    //    val fina = chater7_01_a(5, Buffer(1, 1))
+    //    println(fina)
+    //    val fibonaccis = chater7_01_a_builder(5)
+    //    println(fibonaccis)
+    //    val report = chater7_01_c(1,1).take(100).toList.grouped(10).map(_.mkString(","))
+    //    report.foreach(println(_))
+    //    println(chater7_01_c(1, 1).take(8).toList(index + 1))1
+    //    println(chater7_04("12", "3"))
+    //    println(chater7_05(null))
 
-    val chars = ('a' to 'f').toList
-    println(chapter6_03_first(chars, 2))
-    println(chapter6_03_first(chars, 2))
-    println(chapter6_03_firstByFoldleft(chars, 10))
-    println(chapter6_03_fisrtByTail(chars, 2))
 
-    println(chapter6_04(List("aaa", "bb", "cccc", "qqq")))
-    println(chapter6_04_fold(List("aaa", "bb", "cccc", "qqq")))
-    println(chapter6_04_reduce(List("aaa", "bb", "cccc", "qqq")))
-    val names: List[String] = List("aaqa", "bbq", "cqcccc", "qqaqq")
-    println(chapter6_04_greatest[String](names, (x, y) => if (x.size > y.size) x else y))
+    //    println(chapter3_01(""))
+    //    println(chapter3_02(0))
+    //    chapter3_04(100, 5)
 
-    println(chapter6_05_reverse(names))
-    println(chapter6_05_reverse_recursion(names))
-    println(chapter6_06_partion(names))
+    //    println(chatper4_07((12, 2)))
+    //    println(chapter5_01((1,32,6), max))
+    println(chapter5_03(5, chanster))
+  }
 
-    // http://api.openweathermap.org/data/2.5/weather?q=Nanjing&mode=json&APPID=7cac89b6cb49f7b41b3b49c20503c110
-    val l = chapter6_07("http://api.openweathermap.org/data/2.5/weather?q=Nanjing&mode=xml&APPID=7cac89b6cb49f7b41b3b49c20503c110")
-    println(l(0))
-    println(l.size)
+  def chapter5_03(a: Int, chans: Int => Int): Int = {
+    a * chans(a)
+  }
+
+  def chanster(x: Int) = x * 10
+
+  def chapter5_01(t: (Int, Int, Int), cmp: (Int, Int) => Int): Int = {
+    cmp(t._1, cmp(t._2, t._3))
+  }
+
+  def max(a: Int, b: Int): Int = if (a > b) a else b
+
+  def chatper4_07[A, B](t: (A, B)) = {
+    if (t._1.isInstanceOf[Int])
+      t._1
+  }
+
+  def chapter3_05(n: Int) = {
+    for (i <- 1 until n + 1) {
+      i match {
+        case x if (x % 15 == 0) => println("typesafe")
+        case x if x % 5 == 0 => println("type")
+        case x if x % 5 == 0 => println("safe")
+        case x => println(x)
+      }
+    }
+  }
+
+
+  def chapter3_04(n: Int, interval: Int) = {
+    for (i <- 1 until n + 1) {
+      if (i % 5 == 0) println(i)
+      else print(i + ",")
+    }
+  }
+
+  def chapter3_02(d: Double) = if (d > 0) "greater" else if (d < 0) "less" else "same"
+
+  def chapter3_01(s: String): String = {
+    s match {
+      case "" => "n/a"
+      case _ => s
+    }
+  }
+
+
+  def chater7_05(prop: String) = {
+    util.Try(System.getProperty(prop)).toOption match {
+      case Some(null) => s"无法获取 '$prop' 属性"
+      case Some(a) => Some(a)
+      case _ => s"输入属性不能为空"
+    }
+  }
+
+
+  def chater7_04(a: String, b: String) = {
+    (toDouble(a), toDouble(b)) match {
+      case (Some(a1), Some(b1)) => Some(a1 * b1)
+      case _ => None
+    }
+
+  }
+
+  def toDouble(a: String) = util.Try(a.toDouble).toOption
+
+  def chater7_03(path: String) = {
+    val files = new File(path).listFiles().map(_.getName).filterNot(_ startsWith ".")
+    val fileLookup = files.groupBy(_.head.toLower).toList.sortBy(_._1)
+    for {(c, l) <- fileLookup} {
+      println(s"'$c' has ${l.size} files")
+    }
+
+  }
+
+  def chater7_02(path: String) = {
+    val files = new File(path).listFiles()
+    //    val fileAfter = files.filter(!_.getName.startsWith(".")).map(_.getName).mkString(",")
+    val fileAfter = files.filterNot(_.getName startsWith ".").map(_.getName).mkString(";")
+    fileAfter foreach print
+  }
+
+  def chater7_01_a(x: Int, fina: Buffer[Int]): List[Int] = {
+    if (fina.size >= x) {
+      println("recursive is over " + x)
+    }
+    else {
+      fina += (fina(fina.size - 2) + fina(fina.size - 1))
+      chater7_01_a(x, fina)
+    }
+
+    fina.toList
+  }
+
+
+  def chater7_01_a_builder(x: Int): List[Int] = {
+    val b = List.newBuilder[Int]
+    b ++= List(1, 1)
+    b.result()
+    while (b.result().size < x) {
+      b += (b.result()(b.result().size - 2) + b.result()(b.result().size - 1))
+    }
+    b.result()
+  }
+
+  def chater7_01_c(a: Long, b: Long): Stream[Long] = {
+
+    Stream.cons(a, chater7_01_c(b, a + b))
+  }
+
+  def chater7_01_c_nextFib(i: Int): Option[Long] = {
+    val start = chater7_01_c(1, 1)
+    val preceeding = start.takeWhile(_ <= i).toList
+    if (preceeding.last == i)
+      Some(preceeding.takeRight(2).sum)
+    else
+      None
   }
 
   /**
