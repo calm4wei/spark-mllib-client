@@ -4,3 +4,6 @@ target/*
 *.jar
 .git/*
 checkpoint/*
+tmp/*
+*.txt
+*.bak
