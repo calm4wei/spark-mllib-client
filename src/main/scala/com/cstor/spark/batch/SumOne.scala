@@ -1,4 +1,4 @@
-package com.cstor.spark.test
+package com.cstor.spark.batch
 
 import org.apache.spark.{SparkConf, SparkContext}
 

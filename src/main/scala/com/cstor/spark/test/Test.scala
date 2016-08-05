@@ -2,6 +2,8 @@ package com.cstor.spark.test
 
 import java.io.File
 
+import org.joda.time.DateTime
+
 import scala.collection.mutable.Buffer
 import scala.io.Source
 import scala.sys.process._
@@ -68,22 +70,24 @@ object Test {
     //    chapter3_04(100, 5)
 
     //    println(chatper4_07((12, 2)))
-    val maxZimiliang = (x: Int, y: Int) => if (x > y) x else y
-    println(chapter5_01((1, 32, 6), maxZimiliang))
-    println(chapter5_03(5, chanster))
+//    val maxZimiliang = (x: Int, y: Int) => if (x > y) x else y
+    //    println(chapter5_01((1, 32, 6), maxZimiliang))
+    //    println(chapter5_03(5, chanster))
+    //
+    //    val nextInt = util.Random.nextInt(10)
+    //    println(maxZimiliang(nextInt, nextInt))
+    //
+    //    val multy = chapter5_03_multy(3)
+    //    println(multy(10))
+    //
+    //    chapter5_04_fzero("hello") { s => println(s.reverse) }
+    //
+    //    val sq = chapter5_05_square _
+    //    println(sq(4))
+    //
+    //    println(chapter5_06_conditional[String]("waaaa")(_.size < 4)(_.reverse))
 
-    val nextInt = util.Random.nextInt(10)
-    println(maxZimiliang(nextInt, nextInt))
-
-    val multy = chapter5_03_multy(3)
-    println(multy(10))
-
-    chapter5_04_fzero("hello") { s => println(s.reverse) }
-
-    val sq = chapter5_05_square _
-    println(sq(4))
-
-    println(chapter5_06_conditional[String]("waaaa")(_.size < 4)(_.reverse))
+    println(DateTime.now().toLocalDateTime)
   }
 
   def chapter5_06_conditional[A](x: A)(p: A => Boolean)(f: A => A): A = {

@@ -18,7 +18,7 @@ run () {
 }
 
 usage="Usage:\n
-$0 <sum | mllib> \"<data>\"  <path>
+$0 <sum | mllib | wc> \"<data>\"  <path>
 sum \t Sum values, data format: yyyyMMddHH\n, <path>: to read file path\n
 mllib \t spark machine learing, data format: yyyyMMddHH\n, <path>: to read file path"
 
@@ -53,14 +53,19 @@ fi
 
 case $1 in
   sum)
-    CLASS="com.cstor.spark.test.SumOne"
+    CLASS="com.cstor.spark.batch.SumOne"
     LOG_FILE="SumOne.out.$2"
     PID_FILE="SumOne.pid.$2"
     ;;
   mllib)
-    CLASS="com.cstor.spark.test.MlLibTest"
+    CLASS="com.cstor.spark.batch.MlLibTest"
     LOG_FILE="MlLibTest.out.$2"
     PID_FILE="MlLibTest.pid.$2"
+    ;;
+  wc)
+    CLASS="com.cstor.spark.batch.WordCount"
+    LOG_FILE="WordCount.out.$2"
+    PID_FILE="WordCount.pid.$2"
     ;;
   *)
     echo -e $usage
