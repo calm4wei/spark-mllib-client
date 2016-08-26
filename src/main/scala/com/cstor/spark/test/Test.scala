@@ -2,8 +2,6 @@ package com.cstor.spark.test
 
 import java.io.File
 
-import org.joda.time.DateTime
-
 import scala.collection.mutable.Buffer
 import scala.io.Source
 import scala.sys.process._
@@ -87,7 +85,11 @@ object Test {
     //
     //    println(chapter5_06_conditional[String]("waaaa")(_.size < 4)(_.reverse))
 
-    println(DateTime.now().toLocalDateTime)
+//    println(DateTime.now().toLocalDateTime)
+
+    val strs = "asdf dd w ee dd"
+    val sarr = strs.split(" ")
+    println(sarr(0) + sarr(1))
   }
 
   def chapter5_06_conditional[A](x: A)(p: A => Boolean)(f: A => A): A = {

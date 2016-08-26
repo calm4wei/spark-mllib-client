@@ -67,6 +67,16 @@ case $1 in
     LOG_FILE="WordCount.out.$2"
     PID_FILE="WordCount.pid.$2"
     ;;
+  sql)
+    CLASS="com.cstor.spark.sql.SparkSQLAds"
+    LOG_FILE="SparkSQLAds.out.$2"
+    PID_FILE="SparkSQLAds.pid.$2"
+    ;;
+  hb)
+    CLASS="com.cstor.spark.batch.HBaseInSpark"
+    LOG_FILE="HBaseInSpark.out.$2"
+    PID_FILE="HBaseInSpark.pid.$2"
+    ;;
   *)
     echo -e $usage
     ;;

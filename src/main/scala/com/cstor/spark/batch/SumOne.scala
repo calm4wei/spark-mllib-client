@@ -21,6 +21,11 @@ object SumOne {
     val firstColumnSum = firstCol.reduce((a, b) => a + b)
     println(firstColumnSum.toDouble)
     println(firstCol.count())
+
+    val fm = data.flatMap(d => d.split(""))
+    fm.filter(f => f.equals("") && f.equals(""))
+    val ss = Array("3","4")
+    fm.map(m => m(0).toString + m(1).toString)
   }
 
 }
