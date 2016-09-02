@@ -49,7 +49,7 @@ fi
 
 if [ ! -d $RUN_PATH ];then
   mkdir -p $RUN_PATH
-fi 
+fi
 
 case $1 in
   sum)
@@ -73,7 +73,7 @@ case $1 in
     PID_FILE="SparkSQLAds.pid.$2"
     ;;
   hb)
-    CLASS="com.cstor.spark.batch.HBaseInSpark"
+    CLASS="com.cstor.spark.hbase.HBaseInSpark"
     LOG_FILE="HBaseInSpark.out.$2"
     PID_FILE="HBaseInSpark.pid.$2"
     ;;
