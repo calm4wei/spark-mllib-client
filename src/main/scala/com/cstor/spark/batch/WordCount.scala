@@ -1,5 +1,6 @@
 package com.cstor.spark.batch
 
+import org.apache.hadoop.fs.{Path, FileSystem}
 import org.apache.spark.{SparkContext, SparkConf}
 import org.joda.time.DateTime
 
@@ -31,7 +32,12 @@ object WordCount {
         //        val reParis = paris.repartition(4)
         val count = paris.reduceByKey((a, b) => a + b).sortByKey()
         // TODO 如果目录存在则删除
-        count.saveAsTextFile("output/" + jobName + "-" + dateTime)
+        val outpath = "output/" + jobName + "-" + dateTime
+        val fs = FileSystem.get(new org.apache.hadoop.conf.Configuration())
+        if (fs.exists(new Path(outpath))) {
+            fs.delete((new Path(outpath)), true)
+        }
+        count.saveAsTextFile(outpath)
 
     }
 }

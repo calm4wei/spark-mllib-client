@@ -1,6 +1,6 @@
 package com.cstor.spark.sql
 
-import org.apache.spark.sql.SQLContext
+import org.apache.spark.sql.{SaveMode, SQLContext}
 import org.apache.spark.{SparkConf, SparkContext}
 
 /**
@@ -12,17 +12,16 @@ object SparkSQLAds {
 
 
     def main(args: Array[String]) {
-        val sql = "select * from test.ad_users where ip = '192.168.1.4'"
-//        val spark = SparkSession.builder().appName("Spark SQL Example").enableHiveSupport().getOrCreate()
+        // val sql = "select * from test.ad_users where ip = '192.168.1.4'"
 
-        val sc = new SparkContext(new SparkConf().setAppName("Spark SQL EX"))
-        val spark = new SQLContext(sc)
-        spark.read.load()
-        val t1 = System.currentTimeMillis()
-        val df = spark.sql(sql)
-        val t2 = System.currentTimeMillis()
-        println(sql + " consumer time=" + (t2 - t1))
-        df foreach (d => print(d))
+        val sc = new SparkContext(new SparkConf()
+                .setMaster("local")
+                .setAppName("Spark SQL EX"))
+
+        val sqlContext = new SQLContext(sc)
+        val df = sqlContext.read.load("D:\\work\\workspace\\openSource\\spark\\examples\\src\\main\\resources\\users.parquet")
+        // df foreach (d => print(d))
+        df.write.mode(SaveMode.Append).save("saveusers.parquet")
 
     }
 

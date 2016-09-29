@@ -48,6 +48,16 @@ object HbaseFakeData {
         value
     }
 
+    def sacnData(hTable: HTable, rowkey: String, family: String, column: String): String = {
+        val scan = new Scan()
+        val resultScan = hTable.getScanner(scan)
+        var result = new Result()
+        while ((result = resultScan.next()) != null){
+            result.getRow
+        }
+        ""
+    }
+
     def countData(tableName: String, cf: Array[Byte]): Long = {
         val aggregationClient = new AggregationClient(conf)
         val scan = new Scan()
