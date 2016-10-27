@@ -1,5 +1,6 @@
 package com.cstor.util
 
+import com.cstor.common.GlobalHConnection
 import org.apache.hadoop.conf.Configuration
 import org.apache.hadoop.hbase.client._
 import org.apache.hadoop.hbase.mapreduce.TableInputFormat
@@ -53,6 +54,28 @@ object HBaseUtils {
                 )
             )
         )
+    }
+
+    /**
+      *
+      * @param p
+      * @param hTable
+      */
+    def put2HBase(p: Iterator[((String, String, String), String)], hTable: String): Unit = {
+        // Connect to HTable
+        //        val hConn = HConnectionManager.createConnection(HBaseConfiguration.create)
+        val resultHTable = GlobalHConnection().getTable(hTable)
+        resultHTable.setAutoFlushTo(false)
+
+        // Write results to HTable
+        p.foreach { pair =>
+            val (hRow, hFamily, hQualifier) = pair._1
+            resultHTable.put(
+                new Put(hRow.getBytes).add(hFamily.getBytes, hQualifier.getBytes, Bytes.toBytes(pair._2)))
+        }
+
+        // Close HTable
+        resultHTable.close()
     }
 
 }

@@ -17,7 +17,7 @@ import scala.collection.JavaConverters._
   * Import from https://github.com/calm4wei/spark_hbase/blob/master/src/main/scala/examples/HBaseInput.scala
   * on 2016/08/26
   */
-object HBaseInput {
+object HBaseTest {
     def main(args: Array[String]) {
         val sparkConf = new SparkConf().setAppName("HBaseTest")
         val sc = new SparkContext(sparkConf)
