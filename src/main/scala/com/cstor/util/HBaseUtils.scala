@@ -57,8 +57,9 @@ object HBaseUtils {
     }
 
     /**
+      * write to HBase
       *
-      * @param p
+      * @param p , contains rowkey / ColumnFamily / ColumnQuqlier / value, for example: ((rowkey, ColumnFamily, ColumnQualier), value)
       * @param hTable
       */
     def put2HBase(p: Iterator[((String, String, String), String)], hTable: String): Unit = {
