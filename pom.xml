@@ -314,6 +314,12 @@
             <version>3.15</version>
         </dependency>
 
+        <!-- websocket -->
+        <dependency>
+            <groupId>eu.piotrbuda</groupId>
+            <artifactId>scalawebsocket_2.10</artifactId>
+            <version>0.1.1</version>
+        </dependency>
     </dependencies>
 
 
