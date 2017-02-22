@@ -1,3 +1,5 @@
+package com.cstor.test;
+
 import com.cstor.doc.ImportWord;
 import org.junit.Test;
 

@@ -8,7 +8,7 @@ import org.apache.spark.streaming.kafka._
  * Created on 2016/5/31
  * @author feng.wei
  */
-object SparkStreamingTest {
+object SparkStreamingFromKafka {
 
   def main(args: Array[String]) {
 
